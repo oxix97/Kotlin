@@ -1,5 +1,3 @@
-## Kotlin in Action
-
 ---
 ### 프로퍼티
 
@@ -73,7 +71,7 @@ fun max(a: Int, b: Int): Int {
 }
 ~~~
 
-![img.png](img.png)
+![img.png](img.png) <br>
 출처 : https://thxall92.medium.com/kotlin-코틀린-기초-b10faa5a23fc
 
 fun 함수이름을 선언하고 자바랑 다르게 괄호안에 (변수명 : 자료형) : 리턴타입 이렇게 구성되어 있는 것을 확인 할 수 있다. <br>
