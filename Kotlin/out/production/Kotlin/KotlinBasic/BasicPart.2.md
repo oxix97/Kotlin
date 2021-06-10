@@ -39,6 +39,41 @@ Float, Int, Long, Float 로 스마트 캐스트 된 것을 알 수 있다.
 원하는 타입으로 명시적 타입 캐스팅하려면 as 키워드를 사용하면 된다.
 
 ---
+### Any
+
+Any 형은 자료형이 특별이 정해지지 않은 경우에 사용되며 코틀린의 모든 클래스의 뿌리입니다.
+Int, String , 사용자가 만든 클래스까지 Any 형의 자식 클래스이며, 코틀린의 모든 클래스는 Any 형이라는 슈퍼 클래스를 가지게 됩니다.
+
+~~~kotlin
+fun cast() {
+    val x : Any
+    x = "Hello"
+
+    if(x is String)
+        println(x.length)
+    else
+        print("$x")
+}
+~~~
+
+x에 "Hello" 라는 값을 대입하면 String 으로 스마트 캐스트되어 조건문의 블록을 실행합니다.
+
+#### as에 의한 스마트 캐스트
+
+as로도 스마트 캐스트 할 수 있는데 as 는 형 변환이 가능하지 않으면 예외를 발생시킵니다.
+
+~~~kotlin
+val x : String = y as String
+~~~
+
+해당 문장은 String 으로 스마트 캐스트한 y가 x에 대입되는데 y의 값이 null 인 경우 예외를 발생시킵니다.
+이러한 경우를 피하려면 다음과 같이 ? 기호를 사용하여 막을 수 있습니다.
+
+~~~kotlin
+val x : String = y as? String
+~~~
+
+---
 ### while & for
 
 코틀린에서 while 은 자바와 동일하다. for 는 자바의 for-each 루프에 해당하는 형태만 존재하며 컬렉션에 대한 이터레이션에 형태를 취한다.
@@ -90,4 +125,3 @@ Si <br>
 Si
 
 down to 를 사용하여 역방향으로 반복문을 활용할 수 있으며 step 을 통해 증가 값이 2로 바뀌는 것을 알 수 있다.
-
