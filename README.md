@@ -6,7 +6,7 @@
     - [Basic part.1](https://github.com/oxix97/Kotlin/blob/master/Kotlin/src/KotlinBasic/BasicPart.1.md)
     - [Basic part.2](https://github.com/oxix97/Kotlin/blob/master/Kotlin/src/KotlinBasic/BasicPart.2.md)
     - [Basic part.3](https://github.com/oxix97/Kotlin/blob/master/Kotlin/src/KotlinBasic/BasicPart.3.md)
-    - [Basic part.4]((https://github.com/oxix97/Kotlin/blob/master/Kotlin/src/KotlinBasic/BasicPart.4.md))
+    - [Basic part.4](https://github.com/oxix97/Kotlin/blob/master/Kotlin/src/KotlinBasic/BasicPart.4.md)
     
 ---
 - #### [조건](https://github.com/oxix97/Kotlin/blob/master/Kotlin/src/Condition/Condition.md)
