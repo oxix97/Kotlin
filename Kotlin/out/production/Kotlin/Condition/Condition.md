@@ -2,8 +2,6 @@
 
 - 조건문
 - 반복문
-- 예외
-
 ---
 
 ### 조건문
@@ -143,6 +141,7 @@ fun case(obj: Any) {
 ### 반복문
 
 자바의 반복문과 대부분 똑같다. 그렇지만 코틀린에서는 조금 더 간략하게 나타낸다.
+while문은 자바와 유사하며 for문을 먼저 배우면 while문에게도 동일하게 적용되기 때문에 for문만 다루도록 하겠다.
 
 #### for문
 
@@ -172,3 +171,43 @@ for(i in 5 downTo 1) print(i)//하행 반복
 for(i in 1..5 step 2) print(i) //상행 반복 2씩 증가
 for(i in 5 downTo 1 step 2) print(i) //하행 반복 2씩 감소
 ~~~
+
+#### 실행결과
+
+> 12345 <br>
+54321 <br>
+135 <br>
+531
+
+---
+### 흐름 제어문
+
+- return : 함수에서 결과값을 반환하거나 지정된 라벨로 이동한다.
+- break : 반복문에서 조건식에 상관없이 반복문을 종료한다.
+- continue : 반복문에서 본문을 모두 수행하지 않고 다시 조건식으로 넘어간다.
+
+해당 부분은 자바와 동일한 부분이며 다른 부분을 언급하도록 하겠다.
+
+#### Unit
+
+자바에서는 없는 자료형이다. 값 없이 return만 사용한 경우 -> 특정 자료형을 반환하지 않을 경우에 Unit을 사용한다.
+자바에서 void와 비슷한 것 같지만 코틀린에서는 Unit이라는 자료형을 반환한다. 예를 들어 보자
+
+~~~kotlin
+fun hello(name: String): Unit {
+    print(name)
+    return Unit
+}
+~~~
+~~~kotlin
+fun hello(name: String): Unit {
+    print(name)
+    return
+}
+~~~
+~~~kotlin
+fun hello(name: String): Unit {
+    print(name)
+}
+~~~
+위 3개의 코드는 동일한 결과를 반환하며 2,3번째 코드처럼 Unit,return을 생략하는 경우 Unit을 반환하는 것으로 가정한다.
