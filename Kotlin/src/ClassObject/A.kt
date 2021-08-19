@@ -1,4 +1,4 @@
-package Class_Object
+package ClassObject
 
 class A(var name: String, var old: Int) {}
 
