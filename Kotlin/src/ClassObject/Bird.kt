@@ -2,11 +2,12 @@ package ClassObject
 
 open class Bird(var name: String, var wing: Int, var beak: String, var color: String) {
     fun fly() = println("Fly wing : $wing")
-    fun sing(vol: Int) = println("Sing ovl : $vol")
+    open fun sing(vol: Int) = println("Sing vol : $vol")
 }
 
 class Lark(name: String, wing: Int, beak: String, color: String) : Bird(name, wing, beak, color) {
     fun singHitone() = println("Happy song!")
+    override fun sing(vol:Int) = println("I'm Lark vol : $vol")
 }
 
 class Parrot : Bird {
@@ -22,6 +23,7 @@ class Parrot : Bird {
     }
 
     fun speak() = println("Speak !!  $language")
+    override fun sing(vol:Int) = println("I'm parrot , vol : $vol")
 }
 
 fun main() {
@@ -35,6 +37,6 @@ fun main() {
 
     lark.singHitone()
     parrot.speak()
-    parrot.fly()
-    lark.fly()
+    parrot.sing(3)
+    lark.sing(2)
 }
