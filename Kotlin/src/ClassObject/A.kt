@@ -1,9 +1,23 @@
 package ClassObject
 
-class A(var name: String, var old: Int) {}
 
 fun main() {
-    val name = A("name", 3)
-    println("name : ${name.name}")
-    println("old : ${name.old}")
+    val set = mutableSetOf<String>()
+    val won = 50000
+    val mush = cal(50000,2700)
+    val mp = cal(54000,3000)
+
+    println(mush.asList())
+    println(mp.asList())
+}
+
+fun cal(pay: Int, operation: Int): Array<Int> {
+    var answer = pay
+    var i = 0
+    while (answer > operation) {
+        answer -= operation
+        i++
+    }
+
+    return arrayOf(i,answer)
 }
