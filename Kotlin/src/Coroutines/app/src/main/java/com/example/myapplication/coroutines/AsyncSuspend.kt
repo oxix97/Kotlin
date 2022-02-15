@@ -1,9 +1,7 @@
 package com.example.myapplication.coroutines
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
 suspend fun async1(): String {
     delay(1000L)

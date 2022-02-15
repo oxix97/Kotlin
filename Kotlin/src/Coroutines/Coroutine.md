@@ -142,6 +142,53 @@ fun main() {
 async1( ), async2( )는 async에 의해 감싸져 있어 완전히 병행 수행할 수 있다. 여기서는 예측이 가능하지만 좀 더 복잡한 루틴을 작성하는 경우 어떤 루틴이 먼저 종료 될지 알기 어렵다. 따라서 태스크가 종료되는 시점을 기다렸다가 await( )를 사용해 현재 스레드의 블로킹 없이 먼저 종료되면 결과를 가져올 수 있다. await은 스레드를 방해하지 않고 deferred값이 계산될 때까지, 기다리게 하는 함수이다.
 
 ---
-
 ### 코루틴의 문맥
+
+코루틴이 실행될 때 여러 가지 문맥은 CoroutineContext에 의해 정의된다. launch { ... }와 같이 인자가 없는 경우 CoroutineScope에서 상위의 문맥이 상속되어 결정되고 launch(Dispatchers.Default) { ... }와 같이 사용되면 GlobalScope에서 실행되는 문맥과 동일하게 사용된다. GlobalScope는 메인 스레드의 생명주기가 끝나면 같이 종료된다.
+
+내부적으로 보통 CommonPool이 지정되어 코루틴이 사용할 스레드의 공동 풀을 사용하게 된다. 이것은 이미 초기화되어 있는 스레드 중 하나 혹은 그 이상이 선택되며 초기화하기 때문에 스레드를 생성하는 오버헤드가 없어 빠른 기법이다. 그리고 하나의 스레드에 다수의 코루틴이 동작할 수 있다. 만일 특정 스레드 개수를 직접 지정하려면 다음과 같이 사용자 문맥을 만들어 지정할 수 있다.
+
+---
+
+### 시작 시점에 대한 속성
+
+- 필요한 경우 launch()나 async()에 인자를 지정해 코루틴에 필요한 속성을 줄 수 있다.
+
+### launch( )
+
+~~~kotlin
+fun launch(
+    context : CoroutineContext,
+    start : CoroutineStart,
+    parent : Job?,
+    onCompletion : CompletionHandler?,
+    block : suspend CoroutineScope.() -> Unit) : Job {   
+  	...
+}
+~~~
+
+context 매개변수 이외에도 start 매개변수를 지정할 수 있는데 CoroutineStart는 다음과 같이 정의 가능하다.
+
+> - DEFAULT : 즉시 시작
+> - LAZY : 코루틴을 느리게 시작 -> 처음에는 중단된 상태이며 start(), await() 등으로 시작한다.
+> - ATOMIC : 최적화된 방법으로 시작
+> - UNDISPATCHED : 분산 처리 방법으로 시작
+
+---
+
+### runBlock 사용
+
+runBlocking은 새로운 코루틴을 실행하고 완료되기 전까지 현재 스레드를 블로킹한다. runBlocking에서는 지연 함수를 사용할 수 있다.
+
+~~~kotlin
+fun main() = runBlocking { //main함수가 코루틴 환경에서 실행
+    launch { //백그라운드로 코루틴 실행
+        delay(1000L)
+        println("World!!")
+    }
+    println("Hello!!") // 즉시 실행
+}
+~~~
+
+
 
